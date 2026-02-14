@@ -23,7 +23,6 @@ make test-bench       # go test -bench=. ./...
 make fmt              # gofmt -s -w .
 make fmt-check        # check formatting without modifying
 make lint             # golangci-lint run
-make vet              # go vet ./...
 make check            # fmt-check lint test
 make ci               # fmt lint test (for CI)
 

@@ -3,7 +3,7 @@ GOCMD=go
 GOFMT=gofmt
 GOLANGCI=golangci-lint
 
-.PHONY: all build clean test test-v test-coverage test-bench fmt fmt-check vet lint deps mocks mocks-clean check ci help release-dry release-prepare release
+.PHONY: all build clean test test-v test-coverage test-bench fmt fmt-check lint deps mocks mocks-clean check ci help release-dry release-prepare release
 
 all: clean deps mocks fmt lint test
 
@@ -46,9 +46,6 @@ fmt:
 
 fmt-check:
 	$(GOFMT) -s -l . | read && echo "Code is not formatted" && exit 1 || true
-
-vet:
-	$(GOCMD) vet ./...
 
 lint:
 	$(GOLANGCI) run
@@ -100,7 +97,6 @@ help:
 	@echo "  test-bench     - Run benchmarks"
 	@echo "  fmt            - Format code"
 	@echo "  fmt-check      - Check code formatting"
-	@echo "  vet            - Run go vet"
 	@echo "  lint           - Run golangci-lint"
 	@echo "  check          - Run fmt-check, lint, and test"
 	@echo "  ci             - Run fmt, lint, and test"
